@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RouteHttp4 extends RouteBuilder {
 
-    private static final String URL = "cartaoluizadigital.magazineluiza.com.br/v1/phil/proposals/notifications";
+    private static final String URL = "<the_secure_url>";
     
     public RouteHttp4() {
     }
