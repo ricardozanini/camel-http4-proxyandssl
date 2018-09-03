@@ -2,12 +2,14 @@ package samples.camel.proxyssl;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RouteHttp4 extends RouteBuilder {
 
-    private static final String URL = "<the_secure_url>";
+    @Value("${samples.camel.proxyssl.url}")
+    private String url;    
     
     public RouteHttp4() {
     }
@@ -23,7 +25,7 @@ public class RouteHttp4 extends RouteBuilder {
                 .to("direct:http4-ssl");
         
         from("direct:http4-ssl")
-           .toF("https4://%s?bridgeEndpoint=true&httpClientConfigurer=#proxyConfigurer", URL);
+           .toF("https4://%s?bridgeEndpoint=true&httpClientConfigurer=#proxyConfigurer", url);
     }
 }
     
